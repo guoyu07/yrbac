@@ -28,7 +28,9 @@ class YrbacServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app->bind('yrbac', function() {
+            return new Yrbac;
+        });
 	}
 
 	/**
