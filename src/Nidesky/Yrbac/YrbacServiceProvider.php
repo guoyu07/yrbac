@@ -19,6 +19,9 @@ class YrbacServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('nidesky/yrbac');
+        $this->publishes([
+            __DIR__.'/../database/migrations/create_yrbac_tables.php' => database_path('/migrations/'.date('Y_m_d_His').'_create_yrbac_tables.php')
+        ], 'migrations');
 	}
 
 	/**
@@ -28,9 +31,7 @@ class YrbacServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bind('yrbac', function() {
-            return new Yrbac;
-        });
+		//
 	}
 
 	/**
@@ -40,7 +41,7 @@ class YrbacServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return [];
 	}
 
 }

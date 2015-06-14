@@ -3,13 +3,13 @@
     "description": "",
     "authors": [
         {
-            "name": "nidesky",
-            "email": "nidesky@gmail.com"
+            "name": "yrbac",
+            "email": "82491633@qq.com"
         }
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.2.*"
+        "illuminate/support": "5.0.*"
     },
     "autoload": {
         "classmap": [
