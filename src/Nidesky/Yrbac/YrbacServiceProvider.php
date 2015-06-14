@@ -1,6 +1,7 @@
 <?php namespace Nidesky\Yrbac;
 
 use Illuminate\Support\ServiceProvider;
+use Nidesky\Yrbac\Yrbac;
 
 class YrbacServiceProvider extends ServiceProvider {
 
@@ -18,9 +19,8 @@ class YrbacServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('nidesky/yrbac');
         $this->publishes([
-            __DIR__.'/../database/migrations/create_yrbac_tables.php' => database_path('/migrations/'.date('Y_m_d_His').'_create_yrbac_tables.php')
+            __DIR__.'/../../migrations/create_yrbac_tables.php' => database_path('/migrations/'.date('Y_m_d_His').'_create_yrbac_tables.php')
         ], 'migrations');
 	}
 
@@ -31,7 +31,10 @@ class YrbacServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app->bind('Yrbac', function()
+        {
+            return new Yrbac();
+        });
 	}
 
 	/**

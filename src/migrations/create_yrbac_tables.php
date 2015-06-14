@@ -16,9 +16,9 @@ class CreateYrbacTables extends Migration {
         Schema::create('auth_item', function (Blueprint $table) {
             $table->string('name', 64)->unique();
             $table->tinyInteger('type')->default('1');
-            $table->text('description');
-            $table->text('bizrule');
-            $table->text('data');
+            $table->text('description')->nullable();
+            $table->text('bizrule')->nullable();
+            $table->text('data')->nullable();
 
             $table->primary('name');
             $table->timestamps();
@@ -37,8 +37,8 @@ class CreateYrbacTables extends Migration {
         Schema::create('auth_assignment', function (Blueprint $table) {
             $table->string('itemname', 64);
             $table->bigInteger('user_id');
-            $table->text('bizrule');
-            $table->text('data');
+            $table->text('bizrule')->nullable();
+            $table->text('data')->nullable();
 
             $table->primary(['itemname', 'user_id']);
             $table->foreign('itemname')->references('name')->on('auth_item')->onDelete('cascade')->onUpdate('cascade');
